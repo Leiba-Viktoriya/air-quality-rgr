@@ -1,22 +1,22 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import pickle
+import joblib
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# 1. Настройка страницы
+# Настройка страницы
 st.set_page_config(page_title="РГР: Air Quality Prediction", layout="wide")
 
-# 2. Функция загрузки моделей и скалера
 @st.cache_resource
 def load_models():
-    with open('models_data.pkl', 'rb') as f:
-        return pickle.load(f)
+    return joblib.load('models_data.pkl')
 
 data = load_models()
 
-# 3. Навигация в боковой панели
+data = load_models()
+
+# Навигация в боковой панели
 page = st.sidebar.selectbox("Выберите раздел", [
     "О разработчике", 
     "Датасет и EDA", 
